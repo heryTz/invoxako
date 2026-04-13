@@ -1,3 +1,5 @@
+name: invoxako-prod
+
 services:
   app:
     image: herytz/invoxako
