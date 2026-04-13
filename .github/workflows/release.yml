@@ -83,7 +83,9 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
-          tags: herytz/invoxako:${{ needs.version.outputs.tag }}
+          tags: |
+            herytz/invoxako:${{ needs.version.outputs.tag }}
+            herytz/invoxako:latest
           target: prod
           push: true
           build-args: |
