@@ -25,11 +25,17 @@ export async function getClientById(userId: string, id: string) {
 export type GetClientById = Awaited<ReturnType<typeof getClientById>>;
 
 export async function createClient(userId: string, input: SaveClientInput) {
-  const nbClient = await prisma.client.count({
-    where: { ownerId: userId },
+  const { clientSeq } = await prisma.user.update({
+    where: { id: userId },
+    data: { clientSeq: { increment: 1 } },
+    select: { clientSeq: true },
   });
   const client = await prisma.client.create({
-    data: { ...input, ref: `C${nbClient + 1}`, ownerId: userId },
+    data: {
+      ...input,
+      ref: `C${String(clientSeq).padStart(3, "0")}`,
+      ownerId: userId,
+    },
   });
   return client;
 }

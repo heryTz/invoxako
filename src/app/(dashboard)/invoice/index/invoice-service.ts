@@ -38,17 +38,16 @@ export type GetInvoiceById = Awaited<ReturnType<typeof getInvoiceById>>;
 
 export async function createInvoice(userId: string, input: CreateInvoiceInput) {
   const { products, ...data } = input;
-  const nbInvoice = await prisma.invoice.count({
-    where: { clientId: data.clientId, ownerId: userId },
-  });
-  const client = await prisma.client.findFirstOrThrow({
-    where: { id: data.clientId },
+  const client = await prisma.client.update({
+    where: { id: data.clientId, ownerId: userId },
+    data: { invoiceSeq: { increment: 1 } },
+    select: { ref: true, invoiceSeq: true },
   });
 
   const invoice = await prisma.invoice.create({
     data: {
       ownerId: userId,
-      ref: `${client.ref}-${nbInvoice + 1}`,
+      ref: `${client.ref}.${data.createdAt.getFullYear()}.${String(client.invoiceSeq).padStart(3, "0")}`,
       ...data,
       tva: data.tva ?? 0,
     },
