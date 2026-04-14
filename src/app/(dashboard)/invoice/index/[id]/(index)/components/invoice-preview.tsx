@@ -66,10 +66,8 @@ export function InvoicePreview({
         style={{ fontFamily: "Helvetica" }}
       >
         <div className="text-2xl text-center">
-          Facture n° {invoice.ref} le{" "}
-          <span contentEditable="true" suppressContentEditableWarning>
-            {dayjs().format("DD/MM/YYYY")}
-          </span>
+          Facture n° {invoice.ref} — du{" "}
+          {dayjs(invoice.createdAt).format("DD/MM/YYYY")}
         </div>
         <Separator />
         <div className="flex justify-between gap-4">
