@@ -2,6 +2,8 @@
 
 Invoice management application.
 
+![Demo](demo.png)
+
 ## Features
 
 - Create and manage invoices with PDF export
