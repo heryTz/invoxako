@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
     "test": "dotenv -e .env.test -- npx prisma db push --force-reset && jest --runInBand",
     "test:watch": "dotenv -e .env.test -- npx prisma db push --force-reset && jest --watch",
     "cli": "npx ts-node -r tsconfig-paths/register",

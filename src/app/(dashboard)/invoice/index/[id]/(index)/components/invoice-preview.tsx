@@ -65,9 +65,13 @@ export function InvoicePreview({
         // TODO: jspdf cannot use the custom font, fix this later
         style={{ fontFamily: "Helvetica" }}
       >
-        <div className="text-2xl text-center">
-          Facture n° {invoice.ref} — du{" "}
-          {dayjs(invoice.createdAt).format("DD/MM/YYYY")}
+        <div className="text-center grid gap-1">
+          <div className="text-3xl font-bold uppercase">Facture</div>
+          <div className="text-sm">Numéro : {invoice.ref}</div>
+          <div className="text-sm">
+            Date d&apos;émission :{" "}
+            {dayjs(invoice.createdAt).format("DD/MM/YYYY")}
+          </div>
         </div>
         <Separator />
         <div className="flex justify-between gap-4">
