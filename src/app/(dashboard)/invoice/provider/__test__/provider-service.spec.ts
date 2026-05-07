@@ -74,4 +74,12 @@ describe("provider service", () => {
     );
     await expect(deleteProvider(user2.id, user1provider.id)).rejects.toThrow();
   });
+
+  it("persists tvaNumber on update", async () => {
+    const user = await createUser({ email: "tva-provider@example.com" });
+    const provider = await createProvider(user.id, buildSaveProviderInput());
+    const update = buildSaveProviderInput({ tvaNumber: "FR12345678901" });
+    const providerUpdated = await updateProvider(user.id, provider.id, update);
+    expect(providerUpdated.tvaNumber).toBe("FR12345678901");
+  });
 });

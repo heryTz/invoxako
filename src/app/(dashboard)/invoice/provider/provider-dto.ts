@@ -8,6 +8,7 @@ export const saveProviderInputSchema = z.object({
   siren: z.string().nullable().optional(),
   ape: z.string().nullable().optional(),
   nif: z.string().nullable().optional(),
+  tvaNumber: z.string().nullable().optional(),
 });
 
 export type SaveProviderInput = z.infer<typeof saveProviderInputSchema>;

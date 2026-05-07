@@ -78,6 +78,7 @@ model Client {
   siren        String?
   ape          String?
   nif          String?
+  tvaNumber    String?
   entrepriseId String?
   invoiceSeq   Int       @default(0)
   createdAt    DateTime  @default(now())
@@ -98,6 +99,7 @@ model Provider {
   siren     String?
   ape       String?
   nif       String?
+  tvaNumber String?
   createdAt DateTime  @default(now())
   updatedAt DateTime? @updatedAt
   Owner     User      @relation(fields: [ownerId], references: [id])

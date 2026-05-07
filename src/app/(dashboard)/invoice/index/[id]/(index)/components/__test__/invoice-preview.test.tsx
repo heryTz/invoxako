@@ -54,3 +54,25 @@ describe("InvoicePreview header", () => {
     ).toBeInTheDocument();
   });
 });
+
+describe("InvoicePreview tvaNumber", () => {
+  it("displays tvaNumber when defined on provider", () => {
+    const invoice = {
+      ...mockInvoice,
+      Provider: { ...mockInvoice.Provider, tvaNumber: "FR12345678901" },
+      Client: { ...mockInvoice.Client, tvaNumber: null },
+    } as unknown as GetInvoiceById;
+    render(<InvoicePreview invoice={invoice} invoiceClassName="" />);
+    expect(screen.getByText("FR12345678901")).toBeInTheDocument();
+  });
+
+  it("does not display N° TVA label when both are null", () => {
+    const invoice = {
+      ...mockInvoice,
+      Provider: { ...mockInvoice.Provider, tvaNumber: null },
+      Client: { ...mockInvoice.Client, tvaNumber: null },
+    } as unknown as GetInvoiceById;
+    render(<InvoicePreview invoice={invoice} invoiceClassName="" />);
+    expect(screen.queryByText(/N° TVA/)).not.toBeInTheDocument();
+  });
+});
