@@ -27,6 +27,7 @@ export function InvoicePreview({
     { label: "NIF", value: provider.nif },
     { label: "SIREN", value: provider.siren },
     { label: "APE", value: provider.ape },
+    { label: "N° TVA", value: provider.tvaNumber },
   ];
 
   const client = [
@@ -38,6 +39,7 @@ export function InvoicePreview({
     { label: "SIREN", value: invoice.Client.siren },
     { label: "APE", value: invoice.Client.ape },
     { label: "N° entreprise", value: invoice.Client.entrepriseId },
+    { label: "N° TVA", value: invoice.Client.tvaNumber },
   ];
 
   const products = invoice.Products.map((el) => ({

@@ -113,7 +113,7 @@ export function ProviderSave({
                 control={form.control}
                 name="phone"
                 render={({ field }) => (
-                  <InputField label="Téléphone *" {...field} />
+                  <InputField label="Téléphone" {...field} />
                 )}
               />
             </div>
@@ -134,6 +134,13 @@ export function ProviderSave({
                 control={form.control}
                 name="ape"
                 render={({ field }) => <InputField label="APE" {...field} />}
+              />
+              <FormField
+                control={form.control}
+                name="tvaNumber"
+                render={({ field }) => (
+                  <InputField label="Numéro TVA" {...field} />
+                )}
               />
             </div>
           </div>

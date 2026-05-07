@@ -82,4 +82,12 @@ describe("client service", () => {
     const user1Client = await createClient(user1.id, buildSaveClientInput());
     await expect(deleteClient(user2.id, user1Client.id)).rejects.toThrow();
   });
+
+  it("persists tvaNumber on update", async () => {
+    const user = await createUser({ email: "tva-client@example.com" });
+    const client = await createClient(user.id, buildSaveClientInput());
+    const update = buildSaveClientInput({ tvaNumber: "FR12345678901" });
+    const clientUpdated = await updateClient(user.id, client.id, update);
+    expect(clientUpdated.tvaNumber).toBe("FR12345678901");
+  });
 });

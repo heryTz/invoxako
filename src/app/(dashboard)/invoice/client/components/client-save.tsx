@@ -113,7 +113,7 @@ export function ClientSave({
                 control={form.control}
                 name="phone"
                 render={({ field }) => (
-                  <InputField label="Téléphone *" {...field} />
+                  <InputField label="Téléphone" {...field} />
                 )}
               />
             </div>
@@ -140,6 +140,15 @@ export function ClientSave({
                 name="entrepriseId"
                 render={({ field }) => (
                   <InputField label="N° de l'entreprise" {...field} />
+                )}
+              />
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <FormField
+                control={form.control}
+                name="tvaNumber"
+                render={({ field }) => (
+                  <InputField label="Numéro TVA" {...field} />
                 )}
               />
             </div>
